@@ -1,10 +1,9 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "../../component/button";
 import Gap from "../../component/gap";
 import { getAllDataAction } from "../../redux/actions/dataUser";
-import { getUserDetailAction } from "../../redux/actions/detailUser";
 import "./listUser.scss";
 
 function ListUser() {
@@ -16,11 +15,6 @@ function ListUser() {
   useEffect(() => {
     dispatch(getAllDataAction());
   }, []);
-
-  const handleDetails = (id) => {
-    dispatch(getUserDetailAction(id));
-    navigate("/users/id");
-  };
 
   const handleLogOut = () => {
     navigate("/");
@@ -45,12 +39,9 @@ function ListUser() {
                 </div>
                 <div className="btn-listUser">
                   <div>
-                    <Button
-                      title="Details"
-                      onClick={() => {
-                        handleDetails(item.id);
-                      }}
-                    />
+                    <Link to={"/users/" + item.id}>
+                      <Button title="Details" />
+                    </Link>
                   </div>
                 </div>
               </div>

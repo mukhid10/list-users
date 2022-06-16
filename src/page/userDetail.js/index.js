@@ -1,31 +1,21 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Button from "../../component/button";
 import "./userdetail.scss";
 
 function UserDetail() {
-  const userId = JSON.parse(localStorage.getItem("userByID"));
-  const [data, setData] = useState([]);
-
-  const navigate = useNavigate();
+  const [data, setData] = useState({});
+  const { id } = useParams();
 
   const getDataById = async () => {
-    const result = await axios.get(userId);
+    const result = await axios.get("https://reqres.in/api/users/" + id);
     setData(result.data.data);
-  };
-
-  const handleClick = () => {
-    navigate("/users");
   };
 
   useEffect(() => {
     getDataById();
-  }, [userId]);
-
-  const handleLogOut = () => {
-    navigate("/");
-  };
+  }, [id]);
 
   return (
     <div>
@@ -56,12 +46,16 @@ function UserDetail() {
             </table>
             <div className="btn-right">
               <div>
-                <Button title="Kembali" onClick={() => handleClick()} />
+                <Link to={"/users"}>
+                  <Button title="Kembali" />
+                </Link>
               </div>
             </div>
           </div>
         </div>
-        <Button title="Log Out" onClick={() => handleLogOut()} />
+        <Link to={"/"}>
+          <Button title="Log Out" />
+        </Link>
       </div>
     </div>
   );

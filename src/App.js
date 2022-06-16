@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ListUser from "./page/listUser/index";
 import Login from "./page/login/Login";
 import NotFound from "./page/notFound";
@@ -12,7 +12,7 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/users" element={<ListUser />} />
-        <Route path="/users/id" element={<UserDetail />} />
+        <Route path="/users/:id" element={<UserDetail />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
