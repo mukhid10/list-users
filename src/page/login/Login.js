@@ -30,10 +30,10 @@ function Login() {
     ) {
       alert("Login Success");
       sessionStorage.setItem("isLogin", true);
+      navigate("/users");
     } else {
       alert("Password atau Email Salah");
     }
-    navigate("/users");
   };
 
   const handleClick = () => {

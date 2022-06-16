@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import ListUser from "./page/listUser/index";
 import Login from "./page/login/Login";
@@ -8,6 +9,9 @@ import UserDetail from "./page/userDetail.js";
 function App() {
   const isLogin = sessionStorage.getItem("isLogin");
   console.log(isLogin);
+
+  useEffect(() => {}, [isLogin]);
+
   return (
     <BrowserRouter>
       <Routes>
