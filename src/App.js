@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import ListUser from "./page/listUser/index";
+import Login from "./page/login/Login";
+import NotFound from "./page/notFound";
+import Register from "./page/register/Register";
+import UserDetail from "./page/userDetail.js";
 
 function App() {
+  const isLogin = sessionStorage.getItem("isLogin");
+  console.log(isLogin);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route
+          path="/users"
+          element={isLogin ? <ListUser /> : <Navigate to={"/"} />}
+        />
+        <Route
+          path="/users/id"
+          element={isLogin ? <UserDetail /> : <Navigate to={"/"} />}
+        />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
