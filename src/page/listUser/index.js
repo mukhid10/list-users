@@ -23,7 +23,6 @@ function ListUser() {
   };
 
   const handleLogOut = () => {
-    sessionStorage.removeItem("isLogin");
     navigate("/");
   };
 

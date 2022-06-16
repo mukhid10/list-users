@@ -24,7 +24,6 @@ function UserDetail() {
   }, [userId]);
 
   const handleLogOut = () => {
-    sessionStorage.removeItem("isLogin");
     navigate("/");
   };
 
