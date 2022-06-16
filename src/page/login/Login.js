@@ -29,7 +29,6 @@ function Login() {
       login.password === dataRegister.password
     ) {
       alert("Login Success");
-      sessionStorage.setItem("isLogin", true);
       navigate("/users");
     } else {
       alert("Password atau Email Salah");
