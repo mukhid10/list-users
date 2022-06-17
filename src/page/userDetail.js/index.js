@@ -44,7 +44,7 @@ function UserDetail() {
                 </tr>
               </tbody>
             </table>
-            <div className="btn-right">
+            <div className="btn-right mb-2">
               <div>
                 <Link to={"/users"}>
                   <Button title="Kembali" />
@@ -53,9 +53,11 @@ function UserDetail() {
             </div>
           </div>
         </div>
-        <Link to={"/"}>
-          <Button title="Log Out" />
-        </Link>
+        <div className="mt-5">
+          <Link to={"/"}>
+            <Button title="Log Out" />
+          </Link>
+        </div>
       </div>
     </div>
   );
